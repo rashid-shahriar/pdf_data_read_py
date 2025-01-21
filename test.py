@@ -23,22 +23,9 @@ def extract_ids_from_pdf(pdf_path):
             all_ids.extend(df['Roll'].tolist())
     return all_ids
 
-# Function to get the latest two PDF files from a directory
-def get_latest_two_pdfs(directory):
-    pdf_files = [os.path.join(directory, f) for f in os.listdir(directory) if f.endswith('.pdf')]
-    pdf_files.sort(key=os.path.getmtime, reverse=True)
-    return pdf_files[:2]
-
-# Directory containing the PDFs
-pdf_directory = "."  # Change this to the desired directory path
-latest_pdfs = get_latest_two_pdfs(pdf_directory)
-
-if len(latest_pdfs) < 2:
-    print("Not enough PDF files in the directory.")
-    exit()
-
 # File paths
-pdf_one_path, pdf_two_path = latest_pdfs
+pdf_one_path = "low_balance_report_Jan_20.pdf"
+pdf_two_path = "low_balance_report_Jan_21.pdf"
 
 # Open the PDF files
 pdf_one = fitz.open(pdf_one_path)
